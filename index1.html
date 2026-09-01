@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Café Aroma</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Georgia, serif;
+      background: #F3E9DC;
+      color: #5E3023;
+    }
+
+    header {
+      background: #5E3023;
+      color: #F3E9DC;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 48px;
+    }
+
+    header h1 {
+      font-size: 24px;
+      margin: 0;
+    }
+
+    nav ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      gap: 28px;
+    }
+
+    nav a {
+      color: #F3E9DC;
+      text-decoration: none;
+    }
+
+    .hero {
+      background: #895737;
+      color: #F3E9DC;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 48px;
+      gap: 32px;
+    }
+
+    .hero h2 {
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin: 12px 0;
+    }
+
+    .etiqueta {
+      color: #f4d03f;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .botones a {
+      display: inline-block;
+      background: #5E3023;
+      color: #F3E9DC;
+      text-decoration: none;
+      padding: 12px 24px;
+      border-radius: 24px;
+      margin-right: 12px;
+      margin-top: 20px;
+    }
+
+    .hero img {
+      width: 400px;
+      max-width: 100%;
+    }
+
+    .destacados {
+      display: flex;
+      gap: 40px;
+      padding: 40px 48px;
+    }
+
+    .destacados article {
+      flex: 1;
+    }
+
+    footer {
+      background: #5E3023;
+      color: #DAB49D;
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 48px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Barra superior del prototipo: logo + menú -->
+  <header>
+    <h1>Café Aroma</h1>
+    <nav>
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#menu">Menú</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#galeria">Galería</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Panel principal / hero -->
+    <section class="hero" id="inicio">
+      <div>
+        <p class="etiqueta">Café de especialidad</p>
+        <h2>Despierta tus sentidos con cada taza</h2>
+        <h3>Cafés de origen único</h3>
+        <p>
+          Descubre nuestros cafés de origen único, repostería artesanal
+          fresca y un ambiente acogedor diseñado para disfrutar cada momento.
+        </p>
+        <p class="botones">
+          <a href="#menu">Ver menú</a>
+          <a href="#contacto">Reservar mesa</a>
+        </p>
+      </div>
+      <img src="taza-cafe.jpg" alt="Taza de café latte">
+    </section>
+
+    <!-- Tarjetas inferiores del prototipo -->
+    <section class="destacados" id="nosotros">
+      <article>
+        <h2>Café premium</h2>
+        <h3>Granos seleccionados</h3>
+        <p>Orígenes únicos y granos <strong>seleccionados</strong>.</p>
+      </article>
+      <article>
+        <h2>Repostería fresca</h2>
+        <h3>Horneado diario</h3>
+        <p>Horneada diariamente con <strong>ingredientes locales</strong>.</p>
+      </article>
+      <article>
+        <h2>Ambiente acogedor</h2>
+        <h3>Horario de servicio</h3>
+        <p>Espacio tranquilo y confortable.</p>
+        <p><strong>Lun-Vie: 7am-9pm</strong> | <strong>Sáb-Dom: 7am-7pm</strong></p>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <p>Café Aroma &copy; 2026 — Todos los derechos reservados.</p>
+    <p>Versión del software <strong>1.0.0</strong></p>
+  </footer>
+</body>
+</html>
