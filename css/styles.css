@@ -1,0 +1,213 @@
+/* Configuración general */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Georgia, serif;
+    background: #F3E9DC;
+    color: #5E3023;
+}
+
+
+/* Barra de navegación */
+
+.encabezado {
+    background: #5E3023;
+    color: #F3E9DC;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 14px 48px;
+}
+
+.encabezado h1 {
+    margin: 0;
+    font-size: 25px;
+    font-weight: normal;
+}
+
+.navegacion {
+    display: flex;
+    gap: 35px;
+
+    list-style: none;
+
+    margin: 0;
+    padding: 0;
+}
+
+.navegacion a {
+    color: #F3E9DC;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.navegacion a:hover {
+    color: #f4d03f;
+}
+
+
+/* Sección principal */
+
+.hero {
+    background: #895737;
+    color: #F3E9DC;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 65px 55px;
+
+    gap: 40px;
+}
+
+.hero-contenido {
+    max-width: 600px;
+}
+
+.etiqueta {
+    color: #f4d03f;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.hero h2 {
+    font-size: 38px;
+    letter-spacing: 3px;
+    line-height: 1.15;
+
+    margin: 20px 0;
+}
+
+.descripcion {
+    font-size: 19px;
+    line-height: 1.4;
+}
+
+
+/* Imagen */
+
+.hero-imagen img {
+    width: 430px;
+    max-width: 100%;
+}
+
+
+/* Botones */
+
+.botones {
+    display: flex;
+    gap: 18px;
+    margin-top: 30px;
+}
+
+.botones a {
+    background: #5E3023;
+    color: #F3E9DC;
+
+    text-decoration: none;
+
+    padding: 15px 24px;
+
+    border-radius: 25px;
+
+    font-weight: bold;
+}
+
+.botones a:hover {
+    background: #6f3b2b;
+}
+
+
+/* Listado de accesos directos */
+
+.destacados {
+    background: #F3E9DC;
+
+    display: flex;
+    gap: 40px;
+
+    padding: 45px 48px;
+}
+
+.destacados article {
+    flex: 1;
+}
+
+.destacados article a {
+    color: #5E3023;
+    text-decoration: none;
+}
+
+.destacados article h2 {
+    font-size: 21px;
+    font-weight: normal;
+    margin-bottom: 8px;
+}
+
+.destacados article p {
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+.destacados article a:hover h2 {
+    text-decoration: underline;
+}
+
+
+/* Pie de página */
+
+footer {
+    background: #5E3023;
+    color: #DAB49D;
+
+    display: flex;
+    justify-content: space-between;
+
+    padding: 12px 48px;
+
+    font-size: 14px;
+}
+
+
+/* Adaptación para pantallas pequeñas */
+
+@media (max-width: 800px) {
+
+    .encabezado {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .navegacion {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .botones {
+        justify-content: center;
+    }
+
+    .destacados {
+        flex-direction: column;
+    }
+
+    footer {
+        flex-direction: column;
+        text-align: center;
+    }
+
+}
