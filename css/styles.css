@@ -245,6 +245,8 @@ footer {
     font-weight: bold;
 }
 
+
+
 /* Adaptación para pantallas pequeñas */
 
 @media (max-width: 800px) {
@@ -280,16 +282,16 @@ footer {
     }
 
     .destacados {
-    grid-template-columns: 1fr;
-    padding: 30px 20px;
-}
+        grid-template-columns: 1fr;
+        padding: 30px 20px;
+    }
 
-.hero-foto {
-    height: 280px;
-}
+    .hero-foto {
+        height: 280px;
+    }
 
-.destacado-imagen {
-    height: 230px;
-}
+    .destacado-imagen {
+        height: 230px;
+    }
 
 }
