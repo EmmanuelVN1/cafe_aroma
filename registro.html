@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro | Café Aroma</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 24px 16px;
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
+            color: #5E3023;
+            background: #F3E9DC;
+        }
+
+        main {
+            max-width: 520px;
+            margin: 0 auto;
+            padding: 28px;
+            background: #fff;
+            border-radius: 16px;
+            border-top: 8px solid #895737;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 1.8rem;
+        }
+
+        label {
+            display: block;
+            margin-top: 18px;
+            font-weight: bold;
+        }
+
+        input,
+        select,
+        button {
+            width: 100%;
+            min-height: 44px;
+            padding: 12px;
+            font: inherit;
+            border-radius: 6px;
+        }
+
+        input,
+        select {
+            margin-top: 6px;
+            border: 1px solid #895737;
+            background: #fff;
+            color: #33251f;
+        }
+
+        button {
+            margin-top: 24px;
+            border: none;
+            background: #5E3023;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #75412f;
+        }
+
+        :focus-visible {
+            outline: 3px solid #005fcc;
+            outline-offset: 3px;
+        }
+
+        #resultado {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <h1>Únete al Club Café Aroma</h1>
+        <p>Cuéntanos un poco de ti y de tus gustos por el café.</p>
+        <p>Los campos marcados como obligatorios deben completarse.</p>
+
+        <form id="registro">
+            <label for="nombre">Nombre completo (obligatorio)</label>
+            <input type="text" id="nombre" name="nombre" autocomplete="name" required>
+
+            <label for="correo">Correo electrónico (obligatorio)</label>
+            <input type="email" id="correo" name="correo" autocomplete="email" required>
+
+            <label for="telefono">Teléfono (opcional)</label>
+            <input type="tel" id="telefono" name="telefono" autocomplete="tel">
+
+            <label for="bebida">Bebida favorita (obligatorio)</label>
+            <select id="bebida" name="bebida" required>
+                <option value="">Selecciona una bebida</option>
+                <option value="americano">Café americano</option>
+                <option value="capuchino">Capuchino</option>
+                <option value="latte">Latte</option>
+                <option value="chocolate">Chocolate caliente</option>
+                <option value="te">Té</option>
+            </select>
+
+            <label for="cumpleanos">Fecha de cumpleaños (opcional)</label>
+            <input type="date" id="cumpleanos" name="cumpleanos" autocomplete="bday"
+                aria-describedby="ayuda-cumpleanos">
+            <small id="ayuda-cumpleanos">Para conocer cuándo celebrar tu cumpleaños.</small>
+
+            <button type="submit">Registrarme</button>
+        </form>
+        <p id="resultado" role="status"></p>
+        <p><small>Formulario de práctica: no se envían ni se guardan datos.</small></p>
+    </main>
+    <script>
+        document.getElementById('registro').addEventListener('submit', function (evento) {
+            evento.preventDefault();
+            document.getElementById('resultado').textContent =
+                'Formulario completado correctamente. Este registro es una demostración.';
+        });
+    </script>
+</body>
+
+</html>
