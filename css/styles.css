@@ -25,7 +25,8 @@ body {
     padding: 14px 48px;
 }
 
-.encabezado h1 {
+.encabezado h1,
+.encabezado .marca {
     margin: 0;
     font-size: 25px;
     font-weight: normal;
@@ -294,4 +295,27 @@ footer {
         height: 230px;
     }
 
+}
+
+/* Encabezados principales de las páginas internas */
+.pagina h1,
+.inicio-contenido h1 {
+    font-size: 24px;
+    margin: 0.83em 0;
+}
+
+/* Navegación y galería en móviles */
+@media (max-width: 800px) {
+    .hero {
+        padding: 40px 20px;
+    }
+
+    .botones {
+        flex-wrap: wrap;
+    }
+
+    .galeria {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+    }
 }
