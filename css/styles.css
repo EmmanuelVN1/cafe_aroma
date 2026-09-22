@@ -319,3 +319,7 @@ footer {
         padding: 0 20px;
     }
 }
+/* Selector de ID */
+#titulo-principal {
+    font-weight: bold;
+}
