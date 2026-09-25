@@ -1,3 +1,33 @@
+/* Fuente web: Lora en normal */
+@font-face {
+    font-family: "Lora";
+    src: url("https://fonts.gstatic.com/s/lora/v37/0QI6MX1D_JOuGQbT0gvTJPa787weuyJG.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Fuente web: Lora en negrita */
+@font-face {
+    font-family: "Lora";
+    src: url("https://fonts.gstatic.com/s/lora/v37/0QI6MX1D_JOuGQbT0gvTJPa787z5vCJG.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Variables de tipografía y colores del sitio */
+:root {
+    --fuente-principal: "Lora", Georgia, serif;
+
+    --color-fondo: #F3E9DC;
+    --color-principal: #5E3023;
+    --color-secundario: #895737;
+    --color-acento: #f4d03f;
+    --color-hover: #6f3b2b;
+    --color-pie: #DAB49D;
+}
+
 /* Configuración general */
 
 * {
@@ -6,17 +36,17 @@
 
 body {
     margin: 0;
-    font-family: Georgia, serif;
-    background: #F3E9DC;
-    color: #5E3023;
+    font-family: var(--fuente-principal);
+    background: var(--color-fondo);
+    color: var(--color-principal);
 }
 
 
 /* Barra de navegación */
 
 .encabezado {
-    background: #5E3023;
-    color: #F3E9DC;
+    background: var(--color-principal);
+    color: var(--color-fondo);
 
     display: flex;
     justify-content: space-between;
@@ -43,21 +73,21 @@ body {
 }
 
 .navegacion a {
-    color: #F3E9DC;
+    color: var(--color-fondo);
     text-decoration: none;
     font-size: 18px;
 }
 
 .navegacion a:hover {
-    color: #f4d03f;
+    color: var(--color-acento);
 }
 
 
 /* Sección principal */
 
 .hero {
-    background: #895737;
-    color: #F3E9DC;
+    background: var(--color-secundario);
+    color: var(--color-fondo);
 
     display: flex;
     justify-content: space-between;
@@ -73,7 +103,7 @@ body {
 }
 
 .etiqueta {
-    color: #f4d03f;
+    color: var(--color-acento);
     font-weight: bold;
     font-size: 18px;
 }
@@ -109,8 +139,8 @@ body {
 }
 
 .botones a {
-    background: #5E3023;
-    color: #F3E9DC;
+    background: var(--color-principal);
+    color: var(--color-fondo);
 
     text-decoration: none;
 
@@ -122,14 +152,14 @@ body {
 }
 
 .botones a:hover {
-    background: #6f3b2b;
+    background: var(--color-hover);
 }
 
 
 /* Listado de accesos directos */
 
 .destacados {
-    background: #F3E9DC;
+    background: var(--color-fondo);
 
     display: flex;
     gap: 40px;
@@ -142,7 +172,7 @@ body {
 }
 
 .destacados article a {
-    color: #5E3023;
+    color: var(--color-principal);
     text-decoration: none;
 }
 
@@ -165,8 +195,8 @@ body {
 /* Pie de página */
 
 footer {
-    background: #5E3023;
-    color: #DAB49D;
+    background: var(--color-principal);
+    color: var(--color-pie);
 
     display: flex;
     justify-content: space-between;
@@ -318,4 +348,9 @@ footer {
         grid-template-columns: 1fr;
         padding: 0 20px;
     }
+}
+
+/* Selector de ID */
+#titulo-principal {
+    font-weight: bold;
 }
