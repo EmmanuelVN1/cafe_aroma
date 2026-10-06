@@ -138,7 +138,7 @@ body {
     margin-top: 30px;
 }
 
-.botones a {
+.boton {
     background: var(--color-principal);
     color: var(--color-fondo);
 
@@ -149,9 +149,11 @@ body {
     border-radius: 25px;
 
     font-weight: bold;
+
+    transition: background-color .2s;
 }
 
-.botones a:hover {
+.boton:hover {
     background: var(--color-hover);
 }
 
@@ -167,27 +169,27 @@ body {
     padding: 45px 48px;
 }
 
-.destacados article {
+.destacado {
     flex: 1;
 }
 
-.destacados article a {
+.destacado__enlace {
     color: var(--color-principal);
     text-decoration: none;
 }
 
-.destacados article h2 {
+.destacado__titulo {
     font-size: 21px;
     font-weight: normal;
     margin-bottom: 8px;
 }
 
-.destacados article p {
+.destacado__texto {
     font-size: 15px;
     line-height: 1.4;
 }
 
-.destacados article a:hover h2 {
+.destacado__enlace:hover .destacado__titulo {
     text-decoration: underline;
 }
 
@@ -230,12 +232,12 @@ footer {
     overflow: hidden;
 }
 
-.destacado a {
+.destacado__enlace {
     color: inherit;
     text-decoration: none;
 }
 
-.destacado-imagen {
+.destacado__imagen {
     width: 100%;
     height: 220px;
     object-fit: cover;
@@ -321,7 +323,7 @@ footer {
         height: 280px;
     }
 
-    .destacado-imagen {
+    .destacado__imagen {
         height: 230px;
     }
 
@@ -367,13 +369,13 @@ footer {
     box-shadow: 0 4px 12px rgba(94, 48, 35, 0.12);
 }
 
-.destacado > a {
+.destacado__enlace {
     display: block;
     height: 100%;
 }
 
 /* Botones */
-.botones a {
+.boton {
     display: inline-block;
     margin: 4px 0;
     padding: 12px 22px;
@@ -381,8 +383,8 @@ footer {
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.18);
 }
 
-.botones a:focus-visible,
-.destacado a:focus-visible {
+.boton:focus-visible,
+.destacado__enlace:focus-visible {
     outline: 3px solid var(--color-acento);
     outline-offset: 4px;
 }
@@ -394,7 +396,7 @@ footer {
     padding: 0 24px;
 }
 
-.pagina-info > p {
+.pagina-info>p {
     margin: 0 0 24px;
     line-height: 1.6;
 }
@@ -420,4 +422,19 @@ footer {
     .tarjetas-info {
         grid-template-columns: 1fr;
     }
+}
+
+/* Variante del botón de reserva */
+.boton--secundario {
+    background: transparent;
+}
+
+/* Flecha decorativa de los botones */
+.boton::after {
+    content: " →";
+}
+
+/* Respuesta al presionar el botón */
+.boton:active {
+    transform: scale(.97);
 }
