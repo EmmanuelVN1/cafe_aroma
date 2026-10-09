@@ -7,7 +7,8 @@
 
     <title>Menú | Café de especialidad y repostería - Café Aroma</title>
 
-    <meta name="description" content="Sección del menú de Café Aroma, una cafetería dedicada al café de especialidad y la repostería artesanal.">
+    <meta name="description"
+        content="Sección del menú de Café Aroma, una cafetería dedicada al café de especialidad y la repostería artesanal.">
     <meta name="robots" content="index, follow">
 
     <link rel="canonical" href="https://emmanuelvn1.github.io/cafe_aroma/pages/menu.html">
@@ -15,9 +16,9 @@
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 
-<body>
+<body class="layout">
 
-    <header class="encabezado">
+    <header class="encabezado layout__encabezado">
 
         <p class="marca">Café Aroma</p>
 
@@ -49,19 +50,94 @@
 
     </header>
 
+    <aside class="layout__opciones opciones">
 
-    <main>
+        <h2 class="opciones__titulo">Explora el menú</h2>
 
-        <section class="pagina">
+        <nav aria-label="Productos del menú">
+            <ul class="opciones__lista">
+                <li><a href="#espresso" class="opciones__enlace">Espresso</a></li>
+                <li><a href="#latte" class="opciones__enlace">Latte</a></li>
+                <li><a href="#croissant" class="opciones__enlace">Croissant</a></li>
+                <li><a href="#pan-dulce" class="opciones__enlace">Pan dulce</a></li>
+            </ul>
+        </nav>
 
-           <h1>Menú</h1>
+    </aside>
+
+
+    <main class="layout__principal">
+
+        <section class="pagina carta">
+
+            <h1>Menú</h1>
+
+            <p class="carta__intro">
+                Elige tu café favorito y acompáñalo con algo de nuestra repostería.
+            </p>
+
+            <ul class="carta__productos">
+
+                <li class="producto" id="espresso">
+                    <img src="../assets/img/galeria1.avif" alt="Taza de café espresso" class="producto__imagen"
+                        width="687" height="1031" loading="lazy" decoding="async">
+
+                    <h2 class="producto__titulo">Espresso</h2>
+
+                    <p class="producto__descripcion">
+                        Un café corto, de sabor intenso y aroma concentrado.
+                    </p>
+
+                    <p class="producto__precio">$45 MXN</p>
+                </li>
+
+                <li class="producto" id="latte">
+                    <img src="../assets/img/latte.avif" alt="Café latte con leche" class="producto__imagen" width="1637"
+                        height="916" loading="lazy" decoding="async">
+
+                    <h2 class="producto__titulo">Latte</h2>
+
+                    <p class="producto__descripcion">
+                        Espresso con leche caliente y una capa suave de espuma.
+                    </p>
+
+                    <p class="producto__precio">$60 MXN</p>
+                </li>
+
+                <li class="producto" id="croissant">
+                    <img src="../assets/img/croissant.avif" alt="Croissant de mantequilla" class="producto__imagen"
+                        width="1074" height="806" loading="lazy" decoding="async">
+
+                    <h2 class="producto__titulo">Croissant</h2>
+
+                    <p class="producto__descripcion">
+                        Hojaldre dorado de mantequilla para acompañar tu café.
+                    </p>
+
+                    <p class="producto__precio">$40 MXN</p>
+                </li>
+
+                <li class="producto" id="pan-dulce">
+                    <img src="../assets/img/panes.avif" alt="Pan dulce para acompañar el café" class="producto__imagen"
+                        width="687" height="1031" loading="lazy" decoding="async">
+
+                    <h2 class="producto__titulo">Pan dulce</h2>
+
+                    <p class="producto__descripcion">
+                        Una pieza de pan dulce para disfrutar junto a tu bebida favorita.
+                    </p>
+
+                    <p class="producto__precio">$35 MXN</p>
+                </li>
+
+            </ul>
 
         </section>
 
     </main>
 
 
-    <footer>
+    <footer class="layout__pie">
 
         <p>Café Aroma &copy; 2026</p>
 
