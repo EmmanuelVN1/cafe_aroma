@@ -26,6 +26,13 @@
     --color-acento: #f4d03f;
     --color-hover: #6f3b2b;
     --color-pie: #DAB49D;
+    --espaciado: 20px;
+    --espaciado-pequeno: 12px;
+    --separacion: 24px;
+    --radio-borde: 16px;
+    --ancho-opciones: 220px;
+    --ancho-producto: 220px;
+    --alto-imagen-producto: 180px;
 }
 
 /* Configuración general */
@@ -370,10 +377,10 @@ footer {
 .opciones {
     min-width: 0;
     margin: 8px 0;
-    padding: 20px;
+    padding: var(--espaciado);
     background: #fff9f2;
     border: 1px solid var(--color-pie);
-    border-radius: 16px;
+    border-radius: var(--radio-borde);
     box-shadow: 0 4px 12px rgba(94, 48, 35, 0.12);
 }
 
@@ -450,17 +457,28 @@ footer {
 /* Estructura de la página Menú */
 .layout {
     display: grid;
-    grid-template-columns: 220px 1fr;
+    grid-template-columns: 1fr;
     grid-template-areas:
-        "header header"
-        "sidebar main"
-        "footer footer";
-    gap: 24px;
+        "header"
+        "sidebar"
+        "main"
+        "footer";
+    gap: var(--espaciado);
 }
 
 .layout__encabezado {
     grid-area: header;
+    flex-direction: column;
+    gap: var(--espaciado);
+    padding: var(--espaciado);
 }
+
+.layout .navegacion {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--espaciado-pequeno);
+}
+
 
 .layout__opciones {
     grid-area: sidebar;
@@ -469,28 +487,39 @@ footer {
 .layout__principal {
     grid-area: main;
     min-width: 0;
-    padding: 0 24px 24px 0;
+    padding: 0 var(--espaciado) var(--separacion);
 }
 
 .layout__pie {
     grid-area: footer;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--espaciado-pequeno);
+    padding: var(--espaciado);
+    text-align: center;
 }
+
+.layout__pie p {
+    margin: 0;
+}
+
 
 /* Accesos a los productos */
 .opciones {
     align-self: start;
-    margin: 0 0 0 24px;
+    margin: 0 var(--espaciado);
 }
 
 .opciones__titulo {
-    margin: 0 0 16px;
+    margin: 0 0 var(--espaciado);
     font-size: 20px;
 }
 
 .opciones__lista {
     display: flex;
-    flex-direction: column;
-    gap: 12px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--espaciado-pequeno);
     list-style: none;
     margin: 0;
     padding: 0;
@@ -502,33 +531,33 @@ footer {
 
 /* Listado de productos */
 .carta__intro {
-    margin-bottom: 24px;
+    margin-bottom: var(--separacion);
     line-height: 1.6;
 }
 
 .carta__productos {
     display: flex;
     flex-wrap: wrap;
-    gap: 24px;
+    gap: var(--separacion);
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
 .producto {
-    flex: 1 1 220px;
+    flex: 1 1 var(--ancho-producto);
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: var(--espaciado-pequeno);
     margin: 0;
 }
 
 .producto__imagen {
     width: 100%;
-    height: 180px;
+    height: var(--alto-imagen-producto);
     object-fit: cover;
     display: block;
-    border-radius: 12px;
+    border-radius: var(--radio-borde);
 }
 
 .producto__titulo {
@@ -547,27 +576,46 @@ footer {
     font-weight: bold;
 }
 
-/* Menú en pantallas pequeñas */
-@media (max-width: 800px) {
+/* Tablet */
+@media (min-width: 768px) {
     .layout {
-        grid-template-columns: 1fr;
+        grid-template-columns: var(--ancho-opciones) 1fr;
         grid-template-areas:
-            "header"
-            "sidebar"
-            "main"
-            "footer";
+            "header header"
+            "sidebar main"
+            "footer footer";
+    }
+
+    .layout__encabezado {
+        flex-direction: row;
     }
 
     .opciones {
-        margin: 0 20px;
+        margin: 0 0 0 var(--espaciado);
     }
 
     .opciones__lista {
-        flex-direction: row;
-        flex-wrap: wrap;
+        flex-direction: column;
     }
 
     .layout__principal {
-        padding: 0 20px 24px;
+        padding: 0 var(--espaciado) var(--separacion) 0;
+    }
+
+    .layout__pie {
+        flex-direction: row;
+        text-align: left;
+    }
+}
+
+/* Escritorio */
+@media (min-width: 1024px) {
+    .layout {
+        --espaciado: 24px;
+        --alto-imagen-producto: 200px;
+    }
+
+    .layout .navegacion {
+        gap: var(--separacion);
     }
 }
