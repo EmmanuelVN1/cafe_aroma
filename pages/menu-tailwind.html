@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, follow">
+
+    <title>Menú con Tailwind | Práctica de Café Aroma</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <style>
+        :root {
+            --color-fondo: #F3E9DC;
+            --color-texto: #5E3023;
+            --color-superficie: #fff9f2;
+            --color-borde: #DAB49D;
+        }
+    </style>
+</head>
+
+<body class="bg-[var(--color-fondo)] text-[var(--color-texto)] font-serif">
+
+    <main class="mx-auto max-w-6xl px-5 py-6">
+
+        <a href="menu.html" class="underline underline-offset-4">
+            Volver al menú original
+        </a>
+
+        <h1 class="mt-6 text-3xl font-bold">
+            Menú con Tailwind
+        </h1>
+
+        <p class="mt-3 mb-6">
+            Los mismos productos de Café Aroma usando utilidades de Tailwind.
+        </p>
+
+        <section
+            class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4"
+            aria-label="Productos">
+
+            <article
+                class="flex flex-col overflow-hidden rounded-2xl border border-[var(--color-borde)] bg-[var(--color-superficie)] shadow-sm">
+
+                <img
+                    src="../assets/img/galeria1.avif"
+                    class="h-[180px] w-full object-cover"
+                    alt="Taza de café espresso">
+
+                <div class="flex flex-1 flex-col gap-3 p-4">
+                    <h2 class="text-2xl font-bold">Espresso</h2>
+
+                    <p class="flex-1 leading-relaxed">
+                        Un café corto, de sabor intenso y aroma concentrado.
+                    </p>
+
+                    <p class="font-bold">$45 MXN</p>
+                </div>
+
+            </article>
+
+            <article
+                class="flex flex-col overflow-hidden rounded-2xl border border-[var(--color-borde)] bg-[var(--color-superficie)] shadow-sm">
+
+                <img
+                    src="../assets/img/latte.avif"
+                    class="h-[180px] w-full object-cover"
+                    alt="Café latte con leche">
+
+                <div class="flex flex-1 flex-col gap-3 p-4">
+                    <h2 class="text-2xl font-bold">Latte</h2>
+
+                    <p class="flex-1 leading-relaxed">
+                        Espresso con leche caliente y una capa suave de espuma.
+                    </p>
+
+                    <p class="font-bold">$60 MXN</p>
+                </div>
+
+            </article>
+
+            <article
+                class="flex flex-col overflow-hidden rounded-2xl border border-[var(--color-borde)] bg-[var(--color-superficie)] shadow-sm">
+
+                <img
+                    src="../assets/img/croissant.avif"
+                    class="h-[180px] w-full object-cover"
+                    alt="Croissant de mantequilla">
+
+                <div class="flex flex-1 flex-col gap-3 p-4">
+                    <h2 class="text-2xl font-bold">Croissant</h2>
+
+                    <p class="flex-1 leading-relaxed">
+                        Hojaldre dorado de mantequilla para acompañar tu café.
+                    </p>
+
+                    <p class="font-bold">$40 MXN</p>
+                </div>
+
+            </article>
+
+            <article
+                class="flex flex-col overflow-hidden rounded-2xl border border-[var(--color-borde)] bg-[var(--color-superficie)] shadow-sm">
+
+                <img
+                    src="../assets/img/panes.avif"
+                    class="h-[180px] w-full object-cover"
+                    alt="Pan dulce para acompañar el café">
+
+                <div class="flex flex-1 flex-col gap-3 p-4">
+                    <h2 class="text-2xl font-bold">Pan dulce</h2>
+
+                    <p class="flex-1 leading-relaxed">
+                        Una pieza de pan dulce para disfrutar junto a tu bebida favorita.
+                    </p>
+
+                    <p class="font-bold">$35 MXN</p>
+                </div>
+
+            </article>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

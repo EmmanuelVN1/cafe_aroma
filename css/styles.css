@@ -1,4 +1,17 @@
+/* Índice
+   1. Fuentes y variables
+   2. Base, navegación y portada
+   3. Botones, destacados y galería
+   4. Adaptaciones de inicio y galería
+   5. Tarjetas y página Nosotros
+   6. Menú: Grid y Flexbox
+   7. Menú: tablet y escritorio
+   8. Animación y preferencias del usuario
+*/
+
+/* 1. Fuentes y variables */
 /* Fuente web: Lora en normal */
+
 @font-face {
     font-family: "Lora";
     src: url("https://fonts.gstatic.com/s/lora/v37/0QI6MX1D_JOuGQbT0gvTJPa787weuyJG.ttf") format("truetype");
@@ -33,10 +46,25 @@
     --ancho-opciones: 220px;
     --ancho-producto: 220px;
     --alto-imagen-producto: 180px;
+    color-scheme: light;
+    --color-texto: var(--color-principal);
+    --color-superficie: #fff9f2;
+    --color-encabezado: var(--color-principal);
+    --color-texto-inverso: #F3E9DC;
+    --color-fondo-hero: var(--color-secundario);
+    --color-boton: var(--color-principal);
+    --color-boton-hover: var(--color-hover);
+    --color-enlace: var(--color-principal);
+    --color-enlace-hover: #8a4b1f;
+    --color-borde: var(--color-pie);
+    --color-texto-pie: var(--color-pie);
+    --color-foco: #a15c12;
+    --color-transparente: transparent;
+    --color-sombra-tarjeta: rgba(94, 48, 35, 0.12);
+    --color-sombra-boton: rgba(0, 0, 0, 0.18);
 }
 
-/* Configuración general */
-
+/* 2. Base, navegación y portada */
 * {
     box-sizing: border-box;
 }
@@ -45,15 +73,15 @@ body {
     margin: 0;
     font-family: var(--fuente-principal);
     background: var(--color-fondo);
-    color: var(--color-principal);
+    color: var(--color-texto);
 }
 
 
 /* Barra de navegación */
 
 .encabezado {
-    background: var(--color-principal);
-    color: var(--color-fondo);
+    background: var(--color-encabezado);
+    color: var(--color-texto-inverso);
 
     display: flex;
     justify-content: space-between;
@@ -82,21 +110,28 @@ body {
 }
 
 .navegacion a {
-    color: var(--color-fondo);
+    color: var(--color-texto-inverso);
     text-decoration: none;
     font-size: 18px;
+    transition: color .2s ease;
 }
 
-.navegacion a:hover {
+.navegacion a:hover,
+.navegacion a:focus-visible {
     color: var(--color-acento);
+}
+
+.navegacion a:focus-visible {
+    outline: 2px solid var(--color-acento);
+    outline-offset: 4px;
 }
 
 
 /* Sección principal */
 
 .hero {
-    background: var(--color-secundario);
-    color: var(--color-fondo);
+    background: var(--color-fondo-hero);
+    color: var(--color-texto-inverso);
 
     display: flex;
     justify-content: space-between;
@@ -107,7 +142,7 @@ body {
     gap: 40px;
 }
 
-.hero-contenido {
+hero__contenido {
     max-width: 600px;
 }
 
@@ -118,7 +153,7 @@ body {
 }
 
 .hero h2 {
-    font-size: 38px;
+    font-size: clamp(1.75rem, 1.2rem + 2vw, 2.75rem);
     letter-spacing: 3px;
     line-height: 1.15;
 
@@ -133,17 +168,17 @@ body {
 
 /* Imagen */
 
-.hero-imagen {
+.hero__imagen {
     margin: 0;
 }
 
-.hero-imagen img {
+.hero__imagen img {
     width: 430px;
     max-width: 100%;
 }
 
 
-/* Botones */
+/* 3. Botones, destacados y galería */
 
 .botones {
     display: flex;
@@ -152,22 +187,32 @@ body {
 }
 
 .boton {
-    background: var(--color-principal);
-    color: var(--color-fondo);
-
+    background: var(--color-boton);
+    color: var(--color-texto-inverso);
     text-decoration: none;
-
     padding: 15px 24px;
-
     border-radius: 25px;
-
     font-weight: bold;
+    transition: background-color .2s ease, transform .2s ease;
 
-    transition: background-color .2s;
-}
+    &:hover,
+    &:focus-visible {
+        background: var(--color-boton-hover);
+        transform: translateY(-3px);
+    }
 
-.boton:hover {
-    background: var(--color-hover);
+    &:focus-visible {
+        outline: 3px solid var(--color-acento);
+        outline-offset: 4px;
+    }
+
+    &::after {
+        content: " →";
+    }
+
+    &:active {
+        transform: scale(.97);
+    }
 }
 
 
@@ -187,17 +232,18 @@ body {
 }
 
 .destacado__enlace {
-    color: var(--color-principal);
+    color: var(--color-texto);
     text-decoration: none;
 }
 
 .destacado__titulo {
     font-size: 21px;
     font-weight: normal;
-    margin-bottom: 8px;
+    margin: 0;
 }
 
 .destacado__texto {
+    margin: 0;
     font-size: 15px;
     line-height: 1.4;
 }
@@ -210,8 +256,8 @@ body {
 /* Pie de página */
 
 footer {
-    background: var(--color-principal);
-    color: var(--color-pie);
+    background: var(--color-encabezado);
+    color: var(--color-texto-pie);
 
     display: flex;
     justify-content: space-between;
@@ -221,7 +267,7 @@ footer {
     font-size: 14px;
 }
 
-.hero-foto {
+.hero__foto {
     width: 100%;
     max-width: 500px;
     height: 350px;
@@ -256,10 +302,10 @@ footer {
     object-fit: cover;
     border-radius: 15px;
     display: block;
-    margin-bottom: 18px;
+    margin-bottom: 0;
 }
 
-.galeria-descripcion {
+.galeria__descripcion {
     text-align: center;
     margin: 15px 0 30px;
 }
@@ -273,11 +319,11 @@ footer {
     padding: 0 30px;
 }
 
-.galeria-item {
+.galeria__item {
     margin: 0;
 }
 
-.galeria-item img {
+.galeria__item img {
     width: 100%;
     height: 260px;
     object-fit: cover;
@@ -285,7 +331,7 @@ footer {
     border-radius: 15px;
 }
 
-.galeria-item figcaption {
+.galeria__item figcaption {
     text-align: center;
     margin-top: 10px;
     font-weight: bold;
@@ -293,7 +339,7 @@ footer {
 
 
 
-/* Adaptación para pantallas pequeñas */
+/* 4. Adaptaciones de inicio y galería */
 
 @media (max-width: 800px) {
 
@@ -332,7 +378,7 @@ footer {
         padding: 30px 20px;
     }
 
-    .hero-foto {
+    .hero__foto {
         height: 280px;
     }
 
@@ -344,8 +390,8 @@ footer {
 
 /* Encabezados principales de las páginas internas */
 .pagina h1,
-.inicio-contenido h1 {
-    font-size: 24px;
+.inicio__contenido h1 {
+    font-size: clamp(1.75rem, 1.2rem + 2vw, 2.75rem);
     margin: 0.83em 0;
 }
 
@@ -370,7 +416,7 @@ footer {
     font-weight: bold;
 }
 
-/* Tarjetas */
+/* 5. Tarjetas y página Nosotros */
 .destacado,
 .tarjeta-info,
 .producto,
@@ -378,14 +424,16 @@ footer {
     min-width: 0;
     margin: 8px 0;
     padding: var(--espaciado);
-    background: #fff9f2;
-    border: 1px solid var(--color-pie);
+    background: var(--color-superficie);
+    border: 1px solid var(--color-borde);
     border-radius: var(--radio-borde);
-    box-shadow: 0 4px 12px rgba(94, 48, 35, 0.12);
+    box-shadow: 0 4px 12px var(--color-sombra-tarjeta);
 }
 
 .destacado__enlace {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaciado-pequeno);
     height: 100%;
 }
 
@@ -394,24 +442,24 @@ footer {
     display: inline-block;
     margin: 4px 0;
     padding: 12px 22px;
-    border: 2px solid var(--color-pie);
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.18);
+    border: 2px solid var(--color-borde);
+    box-shadow: 0 3px 8px var(--color-sombra-boton);
 }
 
-.boton:focus-visible,
+
 .destacado__enlace:focus-visible {
     outline: 3px solid var(--color-acento);
     outline-offset: 4px;
 }
 
 /* Página Nosotros */
-.pagina-info {
+.pagina--informativa {
     max-width: 1100px;
     margin: 40px auto;
     padding: 0 24px;
 }
 
-.pagina-info>p {
+.pagina--informativa>p {
     margin: 0 0 24px;
     line-height: 1.6;
 }
@@ -441,20 +489,11 @@ footer {
 
 /* Variante del botón de reserva */
 .boton--secundario {
-    background: transparent;
+    background: var(--color-transparente);
 }
 
-/* Flecha decorativa de los botones */
-.boton::after {
-    content: " →";
-}
 
-/* Respuesta al presionar el botón */
-.boton:active {
-    transform: scale(.97);
-}
-
-/* Estructura de la página Menú */
+/* 6. Menú: Grid y Flexbox */
 .layout {
     display: grid;
     grid-template-columns: 1fr;
@@ -487,7 +526,7 @@ footer {
 .layout__principal {
     grid-area: main;
     min-width: 0;
-    padding: 0 var(--espaciado) var(--separacion);
+    padding: 0 max(1rem, 2vw) var(--separacion);
 }
 
 .layout__pie {
@@ -526,12 +565,32 @@ footer {
 }
 
 .opciones__enlace {
-    color: var(--color-principal);
+    display: inline-block;
+    color: var(--color-enlace);
+    transition: color .2s ease, transform .2s ease;
+
+    &:hover,
+    &:focus-visible {
+        color: var(--color-enlace-hover);
+        transform: translateX(3px);
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--color-foco);
+        outline-offset: 4px;
+    }
 }
 
 /* Listado de productos */
+
+.carta {
+    width: min(100%, 1100px);
+    margin-inline: auto;
+}
+
 .carta__intro {
-    margin-bottom: var(--separacion);
+    margin-bottom: calc(var(--espaciado) * 1.5);
+    font-size: clamp(1rem, .9rem + .5vw, 1.25rem);
     line-height: 1.6;
 }
 
@@ -558,6 +617,25 @@ footer {
     object-fit: cover;
     display: block;
     border-radius: var(--radio-borde);
+    transition: transform .25s ease;
+}
+
+.producto:hover .producto__imagen {
+    transform: scale(1.025) rotate(-1deg);
+}
+
+.producto--recomendado {
+    border-color: var(--color-enlace);
+}
+
+.producto__etiqueta {
+    align-self: flex-start;
+    padding: 6px 10px;
+    border-radius: var(--radio-borde);
+    background: var(--color-boton);
+    color: var(--color-texto-inverso);
+    font-size: .875rem;
+    animation: entrada-etiqueta 1.2s ease-out both;
 }
 
 .producto__titulo {
@@ -576,7 +654,7 @@ footer {
     font-weight: bold;
 }
 
-/* Tablet */
+/* 7. Menú: tablet y escritorio */
 @media (min-width: 768px) {
     .layout {
         grid-template-columns: var(--ancho-opciones) 1fr;
@@ -599,7 +677,7 @@ footer {
     }
 
     .layout__principal {
-        padding: 0 var(--espaciado) var(--separacion) 0;
+        padding: 0 max(1rem, 2vw) var(--separacion) 0;
     }
 
     .layout__pie {
@@ -617,5 +695,61 @@ footer {
 
     .layout .navegacion {
         gap: var(--separacion);
+    }
+}
+
+/* 8. Animación y preferencias del usuario */
+@keyframes entrada-etiqueta {
+    0% {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateY(-3px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        color-scheme: dark;
+        --color-fondo: #201813;
+        --color-texto: #f3e9dc;
+        --color-superficie: #30251f;
+        --color-encabezado: #302018;
+        --color-fondo-hero: #3b291f;
+        --color-boton: #6f3b2b;
+        --color-boton-hover: #814934;
+        --color-enlace: #efc299;
+        --color-enlace-hover: #f4d03f;
+        --color-borde: #80624f;
+        --color-texto-pie: #e8cdb5;
+        --color-foco: #f4d03f;
+        --color-sombra-tarjeta: rgba(0, 0, 0, .35);
+        --color-sombra-boton: rgba(0, 0, 0, .4);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    .boton:hover,
+    .boton:focus-visible,
+    .boton:active,
+    .opciones__enlace:hover,
+    .opciones__enlace:focus-visible,
+    .producto:hover .producto__imagen {
+        transform: none;
     }
 }
