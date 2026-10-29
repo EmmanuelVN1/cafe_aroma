@@ -7,12 +7,14 @@
 
     <title>Contacto | Café Aroma</title>
 
-    <meta name="description" content="Sección de contacto de Café Aroma. Accede a las páginas de inicio, menú, galería y presentación de nuestra cafetería.">
+    <meta name="description"
+        content="Sección de contacto de Café Aroma. Accede a las páginas de inicio, menú, galería y presentación de nuestra cafetería.">
     <meta name="robots" content="index, follow">
 
     <link rel="canonical" href="https://emmanuelvn1.github.io/cafe_aroma/pages/contacto.html">
 
     <link rel="stylesheet" href="../css/styles.css">
+    <script src="../js/interacciones.js" defer></script>
 </head>
 
 <body>
@@ -20,8 +22,19 @@
     <header class="encabezado">
 
         <p class="marca">Café Aroma</p>
+        <div class="encabezado__acciones">
+            <button class="encabezado__boton encabezado__boton--menu" id="boton-menu" type="button"
+                aria-controls="navegacion-principal" aria-expanded="false">
+                <span aria-hidden="true">☰</span>
+                <span>Menú</span>
+            </button>
 
-        <nav>
+            <button class="encabezado__boton" id="boton-tema" type="button" hidden>
+                Modo oscuro
+            </button>
+        </div>
+
+        <nav class="encabezado__nav" id="navegacion-principal" aria-label="Navegación principal">
             <ul class="navegacion">
 
                 <li><a href="../index.html">Inicio</a></li>

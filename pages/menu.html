@@ -14,6 +14,7 @@
     <link rel="canonical" href="https://emmanuelvn1.github.io/cafe_aroma/pages/menu.html">
 
     <link rel="stylesheet" href="../css/styles.css">
+    <script src="../js/interacciones.js" defer></script>
 </head>
 
 <body class="layout">
@@ -21,8 +22,19 @@
     <header class="encabezado layout__encabezado">
 
         <p class="marca">Café Aroma</p>
+        <div class="encabezado__acciones">
+            <button class="encabezado__boton encabezado__boton--menu" id="boton-menu" type="button"
+                aria-controls="navegacion-principal" aria-expanded="false">
+                <span aria-hidden="true">☰</span>
+                <span>Menú</span>
+            </button>
 
-        <nav>
+            <button class="encabezado__boton" id="boton-tema" type="button" hidden>
+                Modo oscuro
+            </button>
+        </div>
+
+        <nav class="encabezado__nav" id="navegacion-principal" aria-label="Navegación principal">
             <ul class="navegacion">
 
                 <li>
@@ -76,7 +88,18 @@
                 Elige tu café favorito y acompáñalo con algo de nuestra repostería.
             </p>
 
-            <ul class="carta__productos">
+            <div class="buscador">
+                <label class="buscador__etiqueta" for="buscar-producto">
+                    Buscar productos por nombre
+                </label>
+
+                <input class="buscador__entrada" id="buscar-producto" type="search" placeholder="Ejemplo: latte o pan"
+                    aria-controls="lista-productos">
+
+                <p class="buscador__resultado" id="resultado-busqueda" role="status" aria-live="polite"></p>
+            </div>
+
+            <ul class="carta__productos" id="lista-productos">
 
                 <li class="producto producto--recomendado" id="espresso">
                     <img src="../assets/img/galeria1.avif" alt="Taza de café espresso" class="producto__imagen"
