@@ -8,6 +8,7 @@
    7. Menú: tablet y escritorio
    8. Animación y preferencias del usuario
    9. Interacciones: navegación, tema y buscador
+   10. Formulario de contacto y validación
 */
 
 /* 1. Fuentes y variables */
@@ -866,4 +867,67 @@ body.modo-oscuro {
         display: block;
         padding: 10px 14px;
     }
+}
+
+/* 10. Formulario de contacto y validación */
+.formulario {
+    --color-error: #a12525;
+    display: grid;
+    gap: var(--espaciado);
+    max-width: 650px;
+    padding: var(--espaciado);
+    background: var(--color-superficie);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-borde);
+    box-shadow: 0 4px 12px var(--color-sombra-tarjeta);
+}
+
+.modo-oscuro .formulario {
+    --color-error: #ffb4ab;
+}
+
+.formulario__campo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+}
+
+.formulario__control {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    background: var(--color-fondo);
+    color: var(--color-texto);
+    font: inherit;
+}
+
+textarea.formulario__control {
+    resize: vertical;
+}
+
+.formulario__control:focus-visible {
+    outline: 2px solid var(--color-foco);
+    outline-offset: 3px;
+}
+
+.formulario__control[aria-invalid="true"] {
+    border-color: var(--color-error);
+}
+
+.formulario__error {
+    min-height: 1.25em;
+    color: var(--color-error);
+    font-size: .9rem;
+}
+
+.formulario__boton {
+    justify-self: start;
+    font: inherit;
+    cursor: pointer;
+}
+
+.formulario__resultado {
+    margin: 0;
 }

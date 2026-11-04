@@ -14,7 +14,7 @@
     <link rel="canonical" href="https://emmanuelvn1.github.io/cafe_aroma/pages/contacto.html">
 
     <link rel="stylesheet" href="../css/styles.css">
-    <script src="../js/interacciones.js" defer></script>
+    <script src="../js/interacciones.js" type="module"></script>
 </head>
 
 <body>
@@ -55,9 +55,41 @@
 
     <main>
 
-        <section class="pagina">
+        <section class="pagina pagina--informativa">
 
             <h1>Contacto</h1>
+
+            <p>Escríbenos tus dudas sobre Café Aroma. Todos los campos son obligatorios.</p>
+            <p>Formulario de práctica: no envía mensajes.</p>
+
+            <form class="formulario" id="formulario-contacto" novalidate>
+                <div class="formulario__campo">
+                    <label for="nombre">Nombre</label>
+                    <input class="formulario__control" id="nombre" name="nombre" type="text" autocomplete="name"
+                        required minlength="2" maxlength="60" aria-describedby="error-nombre">
+                    <span class="formulario__error" id="error-nombre"></span>
+                </div>
+
+                <div class="formulario__campo">
+                    <label for="correo">Correo electrónico</label>
+                    <input class="formulario__control" id="correo" name="correo" type="email" autocomplete="email"
+                        required aria-describedby="error-correo">
+                    <span class="formulario__error" id="error-correo"></span>
+                </div>
+
+                <div class="formulario__campo">
+                    <label for="mensaje">Mensaje</label>
+                    <textarea class="formulario__control" id="mensaje" name="mensaje" rows="5" required minlength="10"
+                        maxlength="500" aria-describedby="error-mensaje"></textarea>
+                    <span class="formulario__error" id="error-mensaje"></span>
+                </div>
+
+                <button class="boton formulario__boton" type="submit">
+                    Validar mensaje
+                </button>
+
+                <p class="formulario__resultado" id="resultado-formulario" role="status" aria-live="polite"></p>
+            </form>
 
         </section>
 

@@ -1,3 +1,5 @@
+import { iniciarFormulario } from "./formulario.js";
+
 // Menú de navegación en pantallas pequeñas.
 const encabezado = document.querySelector(".encabezado");
 const botonMenu = document.querySelector("#boton-menu");
@@ -99,3 +101,5 @@ if (buscador && resultadoBusqueda) {
         });
     });
 }
+
+iniciarFormulario();
