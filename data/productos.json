@@ -1,0 +1,46 @@
+[
+    {
+        "id": "espresso",
+        "nombre": "Espresso",
+        "descripcion": "Un café corto, de sabor intenso y aroma concentrado.",
+        "precio": 45,
+        "imagen": "../assets/img/galeria1.avif",
+        "alt": "Taza de café espresso",
+        "ancho": 687,
+        "alto": 1031,
+        "recomendado": true
+    },
+    {
+        "id": "latte",
+        "nombre": "Latte",
+        "descripcion": "Espresso con leche caliente y una capa suave de espuma.",
+        "precio": 60,
+        "imagen": "../assets/img/latte.avif",
+        "alt": "Café latte con leche",
+        "ancho": 1637,
+        "alto": 916,
+        "recomendado": false
+    },
+    {
+        "id": "croissant",
+        "nombre": "Croissant",
+        "descripcion": "Hojaldre dorado de mantequilla para acompañar tu café.",
+        "precio": 40,
+        "imagen": "../assets/img/croissant.avif",
+        "alt": "Croissant de mantequilla",
+        "ancho": 1074,
+        "alto": 806,
+        "recomendado": false
+    },
+    {
+        "id": "pan-dulce",
+        "nombre": "Pan dulce",
+        "descripcion": "Una pieza de pan dulce para disfrutar junto a tu bebida favorita.",
+        "precio": 35,
+        "imagen": "../assets/img/panes.avif",
+        "alt": "Pan dulce para acompañar el café",
+        "ancho": 687,
+        "alto": 1031,
+        "recomendado": false
+    }
+]

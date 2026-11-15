@@ -1,4 +1,5 @@
 import { iniciarFormulario } from "./formulario.js";
+import { iniciarMenu } from "./menu.js";
 
 // Menú de navegación en pantallas pequeñas.
 const encabezado = document.querySelector(".encabezado");
@@ -32,7 +33,14 @@ if (botonTema) {
     let temaGuardado = null;
 
     try {
-        temaGuardado = localStorage.getItem("cafe-aroma-tema");
+        const valor = localStorage.getItem("cafe-aroma-tema");
+
+        if (valor === "oscuro" || valor === "claro") {
+            temaGuardado = valor;
+            localStorage.setItem("cafe-aroma-tema", JSON.stringify(valor));
+        } else if (valor !== null) {
+            temaGuardado = JSON.parse(valor);
+        }
     } catch {
         // Si el almacenamiento está bloqueado, se usa el tema del sistema.
     }
@@ -56,7 +64,8 @@ if (botonTema) {
         actualizarBotonTema();
 
         try {
-            localStorage.setItem("cafe-aroma-tema", oscuro ? "oscuro" : "claro");
+            const tema = oscuro ? "oscuro" : "claro";
+            localStorage.setItem("cafe-aroma-tema", JSON.stringify(tema));
         } catch {
             // El botón sigue funcionando aunque no se pueda guardar la elección.
         }
@@ -68,9 +77,12 @@ const buscador = document.querySelector("#buscar-producto");
 const resultadoBusqueda = document.querySelector("#resultado-busqueda");
 
 if (buscador && resultadoBusqueda) {
-    const productos = document.querySelectorAll(".carta__productos .producto");
-
     function filtrarProductos() {
+        if (buscador.disabled) {
+            return;
+        }
+
+        const productos = document.querySelectorAll(".carta__productos .producto");
         const busqueda = buscador.value.trim().toLowerCase();
         let visibles = 0;
 
@@ -91,7 +103,7 @@ if (buscador && resultadoBusqueda) {
     }
 
     buscador.addEventListener("input", filtrarProductos);
-    filtrarProductos();
+    iniciarMenu(filtrarProductos);
 
     // Los accesos laterales vuelven a mostrar la carta antes de ir al producto.
     document.querySelectorAll(".opciones__enlace").forEach((enlace) => {

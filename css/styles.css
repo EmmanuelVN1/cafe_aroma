@@ -931,3 +931,14 @@ textarea.formulario__control {
 .formulario__resultado {
     margin: 0;
 }
+
+/* 11. Carga de productos */
+.carta__reintentar {
+    margin-bottom: var(--separacion);
+    font: inherit;
+    cursor: pointer;
+}
+
+.carta__reintentar[hidden] {
+    display: none;
+}

@@ -99,63 +99,17 @@
                 <p class="buscador__resultado" id="resultado-busqueda" role="status" aria-live="polite"></p>
             </div>
 
-            <ul class="carta__productos" id="lista-productos">
+            <p id="estado-menu" role="status" aria-live="polite"></p>
 
-                <li class="producto producto--recomendado" id="espresso">
-                    <img src="../assets/img/galeria1.avif" alt="Taza de café espresso" class="producto__imagen"
-                        width="687" height="1031" loading="lazy" decoding="async">
+            <button class="boton carta__reintentar" id="reintentar-menu" type="button" hidden>
+                Volver a intentar
+            </button>
 
-                    <span class="producto__etiqueta">Recomendado</span>
+            <ul class="carta__productos" id="lista-productos" aria-busy="false"></ul>
 
-                    <h2 class="producto__titulo">Espresso</h2>
-
-                    <p class="producto__descripcion">
-                        Un café corto, de sabor intenso y aroma concentrado.
-                    </p>
-
-                    <p class="producto__precio">$45 MXN</p>
-                </li>
-
-                <li class="producto" id="latte">
-                    <img src="../assets/img/latte.avif" alt="Café latte con leche" class="producto__imagen" width="1637"
-                        height="916" loading="lazy" decoding="async">
-
-                    <h2 class="producto__titulo">Latte</h2>
-
-                    <p class="producto__descripcion">
-                        Espresso con leche caliente y una capa suave de espuma.
-                    </p>
-
-                    <p class="producto__precio">$60 MXN</p>
-                </li>
-
-                <li class="producto" id="croissant">
-                    <img src="../assets/img/croissant.avif" alt="Croissant de mantequilla" class="producto__imagen"
-                        width="1074" height="806" loading="lazy" decoding="async">
-
-                    <h2 class="producto__titulo">Croissant</h2>
-
-                    <p class="producto__descripcion">
-                        Hojaldre dorado de mantequilla para acompañar tu café.
-                    </p>
-
-                    <p class="producto__precio">$40 MXN</p>
-                </li>
-
-                <li class="producto" id="pan-dulce">
-                    <img src="../assets/img/panes.avif" alt="Pan dulce para acompañar el café" class="producto__imagen"
-                        width="687" height="1031" loading="lazy" decoding="async">
-
-                    <h2 class="producto__titulo">Pan dulce</h2>
-
-                    <p class="producto__descripcion">
-                        Una pieza de pan dulce para disfrutar junto a tu bebida favorita.
-                    </p>
-
-                    <p class="producto__precio">$35 MXN</p>
-                </li>
-
-            </ul>
+            <noscript>
+                <p>Activa JavaScript para consultar el menú.</p>
+            </noscript>
 
         </section>
 

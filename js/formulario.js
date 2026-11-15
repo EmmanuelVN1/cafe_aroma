@@ -1,3 +1,4 @@
+import Swal from "./vendor/sweetalert2.esm.all.min.js";
 import { validarNombre, validarCorreo, validarMensaje } from "./validaciones.js";
 
 export function iniciarFormulario() {
@@ -51,6 +52,17 @@ export function iniciarFormulario() {
         }
 
         resultado.textContent = "Datos válidos. Esta demostración no envía el mensaje.";
+
+        Swal.fire({
+            icon: "success",
+            title: "Datos válidos",
+            text: "El formulario pasó la validación. Esta demostración no envía el mensaje.",
+            confirmButtonText: "Aceptar",
+            confirmButtonColor: "#5e3023",
+            background: "var(--color-superficie)",
+            color: "var(--color-texto)",
+            heightAuto: false
+        });
     });
 
     formulario.addEventListener("input", () => {
