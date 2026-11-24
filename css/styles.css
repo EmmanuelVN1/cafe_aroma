@@ -334,6 +334,7 @@ footer {
 }
 
 .galeria__item figcaption {
+    overflow-wrap: anywhere;
     text-align: center;
     margin-top: 10px;
     font-weight: bold;

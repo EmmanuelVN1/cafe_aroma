@@ -15,6 +15,7 @@
 
     <link rel="stylesheet" href="../css/styles.css">
     <script src="../js/interacciones.js" type="module"></script>
+    <script src="../js/galeria.js" type="module"></script>
 </head>
 
 <body>
@@ -59,46 +60,59 @@
 
             <h1>Galería</h1>
 
-            <div class="galeria">
+            <p id="estado-galeria" class="galeria__descripcion" role="status"></p>
+            <div class="galeria" id="lista-fotos"></div>
 
-                <figure class="galeria__item">
-                    <img src="../assets/img/galeria1.avif" alt="Taza de café espresso" width="687" height="1031"
-                        loading="lazy" decoding="async">
-                    <figcaption>Espresso</figcaption>
-                </figure>
+            <section class="pagina--informativa" aria-labelledby="titulo-alta-foto">
+                <button id="reintentar-galeria" class="boton carta__reintentar" type="button" hidden>
+                    Volver a cargar la galería
+                </button>
 
-                <figure class="galeria__item">
-                    <img src="../assets/img/galeria.avif" alt="Cappuccino con espuma de leche" width="687" height="1031"
-                        loading="lazy" decoding="async">
-                    <figcaption>Cappuccino</figcaption>
-                </figure>
+                <h2 id="titulo-alta-foto">Agregar una foto a la galería</h2>
+                <p>Elige una imagen del café, ponle un título y describe lo que se ve.</p>
 
-                <figure class="galeria__item">
-                    <img src="../assets/img/latte.avif" alt="Café latte" width="1637" height="916" loading="lazy"
-                        decoding="async">
-                    <figcaption>Latte</figcaption>
-                </figure>
+                <form id="formulario-foto" class="formulario">
+                    <div class="formulario__campo">
+                        <label for="foto-titulo">Título</label>
+                        <input id="foto-titulo" class="formulario__control" name="titulo" type="text" required
+                            minlength="2" maxlength="60">
+                    </div>
 
-                <figure class="galeria__item">
-                    <img src="../assets/img/croissant.avif" alt="Croissant artesanal recién horneado" width="1074"
-                        height="806" loading="lazy" decoding="async">
-                    <figcaption>Croissant artesanal</figcaption>
-                </figure>
+                    <div class="formulario__campo">
+                        <label for="foto-categoria">Categoría</label>
+                        <select id="foto-categoria" class="formulario__control" name="categoria" required>
+                            <option value="">Elige una categoría</option>
+                            <option>Bebidas</option>
+                            <option>Repostería</option>
+                            <option>Ambiente</option>
+                        </select>
+                    </div>
 
-                <figure class="galeria__item">
-                    <img src="../assets/img/panes.avif" alt="Postre artesanal de Café Aroma" width="687" height="1031"
-                        loading="lazy" decoding="async">
-                    <figcaption>Repostería artesanal</figcaption>
-                </figure>
+                    <div class="formulario__campo">
+                        <label for="foto-imagen">Imagen del café</label>
+                        <select id="foto-imagen" class="formulario__control" name="imagen" required>
+                            <option value="">Elige una imagen</option>
+                            <option value="ambienteacogedor.jpg">Ambiente del café</option>
+                            <option value="reposteriafresca.avif">Repostería fresca</option>
+                            <option value="tazadecafe.png">Taza de café</option>
+                        </select>
+                    </div>
 
-                <figure class="galeria__item">
-                    <img src="../assets/img/cafeteriainterior.webp"
-                        alt="Interior de la cafetería con mesas, sillas y barra de café" width="768" height="432"
-                        loading="lazy" decoding="async">
-                    <figcaption>Interior de la cafetería</figcaption>
-                </figure>
+                    <div class="formulario__campo">
+                        <label for="foto-descripcion">Descripción de la imagen</label>
+                        <textarea id="foto-descripcion" class="formulario__control" name="descripcion" rows="3" required
+                            minlength="5" maxlength="160"></textarea>
+                    </div>
 
-            </div>
+                    <button id="guardar-foto" class="boton formulario__boton" type="submit" disabled>
+                        Agregar a la galería
+                    </button>
+
+                    <p id="resultado-foto" class="formulario__resultado" role="status"></p>
+                </form>
+
+                <noscript>Activa JavaScript para consultar la galería o agregar una foto.</noscript>
+            </section>
 
         </section>
 
