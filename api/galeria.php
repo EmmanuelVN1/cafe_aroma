@@ -1,33 +1,55 @@
 <?php
 
 require __DIR__ . '/helpers.php';
+require __DIR__ . '/db.php';
 
 $metodo = $_SERVER['REQUEST_METHOD'];
 
-if ($metodo !== 'GET' && $metodo !== 'POST') {
-    header('Allow: GET, POST');
-    responder(405, ['error' => 'Usa GET para consultar o POST para agregar una foto.']);
+if (!in_array($metodo, ['GET', 'POST', 'PUT', 'DELETE'], true)) {
+    header('Allow: GET, POST, PUT, DELETE');
+    responder(405, ['error' => 'Método no permitido.']);
 }
 
 try {
-    $iniciales = require __DIR__ . '/data/fotos_iniciales.php';
+    $id = null;
+
+    if (isset($_GET['id'])) {
+        $id = filter_var($_GET['id'], FILTER_VALIDATE_INT, [
+            'options' => ['min_range' => 1]
+        ]);
+
+        if ($id === false) {
+            responder(400, ['error' => 'El id debe ser un entero positivo.']);
+        }
+    }
+
+    if (in_array($metodo, ['PUT', 'DELETE'], true) && $id === null) {
+        responder(400, ['error' => 'Falta el id de la foto.']);
+    }
+
+    $pdo = conectar();
 
     if ($metodo === 'GET') {
-        $fotos = datosGaleria($iniciales);
-
-        if (!isset($_GET['id'])) {
-            responder(200, $fotos);
+        if ($id !== null) {
+            responder(200, buscarFoto($pdo, $id));
         }
 
-        $id = filter_var($_GET['id'], FILTER_VALIDATE_INT);
+        $consulta = $pdo->query(
+            'SELECT id, titulo, categoria, imagen, descripcion FROM fotos ORDER BY id'
+        );
+        responder(200, $consulta->fetchAll());
+    }
 
-        foreach ($fotos as $foto) {
-            if ($foto['id'] === $id) {
-                responder(200, $foto);
-            }
+    if ($metodo === 'DELETE') {
+        $consulta = $pdo->prepare('DELETE FROM fotos WHERE id = ?');
+        $consulta->execute([$id]);
+
+        if ($consulta->rowCount() === 0) {
+            responder(404, ['error' => 'No se encontró una foto con ese id.']);
         }
 
-        responder(404, ['error' => 'No se encontró una foto con ese id.']);
+        http_response_code(204);
+        exit;
     }
 
     $datos = json_decode(file_get_contents('php://input'));
@@ -53,19 +75,31 @@ try {
         responder(422, ['error' => 'Elige una de las tres categorías de la galería.']);
     }
 
-    if (!preg_match('/\A[a-z0-9_-]+\.(?:avif|webp|jpe?g|jfif|png)\z/i', $imagen)
-        || !is_file(__DIR__ . '/../assets/img/' . $imagen)) {
+    if (
+        !preg_match('/\A[a-z0-9_-]+\.(?:avif|webp|jpe?g|jfif|png)\z/i', $imagen)
+        || !is_file(__DIR__ . '/../assets/img/' . $imagen)
+    ) {
         responder(422, ['error' => 'Elige una imagen disponible en la cafetería.']);
     }
 
-    $creada = datosGaleria($iniciales, [
-        'titulo' => $titulo,
-        'categoria' => $categoria,
-        'imagen' => $imagen,
-        'descripcion' => $descripcion
-    ]);
+    if ($metodo === 'POST') {
+        $consulta = $pdo->prepare(
+            'INSERT INTO fotos (titulo, categoria, imagen, descripcion) VALUES (?, ?, ?, ?)'
+        );
+        $consulta->execute([$titulo, $categoria, $imagen, $descripcion]);
 
-    responder(201, $creada);
+        responder(201, buscarFoto($pdo, (int) $pdo->lastInsertId()));
+    }
+
+    if ($metodo === 'PUT') {
+        $consulta = $pdo->prepare(
+            'UPDATE fotos SET titulo = ?, categoria = ?, imagen = ?, descripcion = ? WHERE id = ?'
+        );
+        $consulta->execute([$titulo, $categoria, $imagen, $descripcion, $id]);
+
+        responder(200, buscarFoto($pdo, $id));
+    }
+
 } catch (Throwable $error) {
     error_log($error->getMessage());
     responder(500, ['error' => 'No se pudo leer o guardar la galería. Inténtalo de nuevo.']);
